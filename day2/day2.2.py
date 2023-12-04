@@ -25,8 +25,8 @@ def main():
     if len(sys.argv) < 2:
         sys.exit("Usage: {} <input>".format(sys.argv[0]))
 
-    power_sum = 0
     with open(sys.argv[1]) as doc:
+        power_sum = 0
         for line in doc:
             power_sum += game_power(line)
         print(power_sum)

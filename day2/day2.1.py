@@ -35,8 +35,8 @@ def main():
     if len(sys.argv) < 2:
         sys.exit("Usage: {} <input>".format(sys.argv[0]))
 
-    valid_ids = []
     with open(sys.argv[1]) as doc:
+        valid_ids = []
         for line in doc:
             # Extract game ID
             id = int(re.search("[0-9]+", line).group(0))
