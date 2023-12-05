@@ -13,14 +13,14 @@ def validate_game(sets: list[str]) -> bool:
 
     for set in sets:
         # Extract cube info
-        cubes_r = re.findall(r"(\d+) (red)", set)
-        cubes_g = re.findall(r"(\d+) (green)", set)
-        cubes_b = re.findall(r"(\d+) (blue)", set)
+        cubes_r = re.findall(r"(\d+) red", set)
+        cubes_g = re.findall(r"(\d+) green", set)
+        cubes_b = re.findall(r"(\d+) blue", set)
 
         # Count total of {red, green, blue} cubes
-        sum_r = sum(int(i[0]) for i in cubes_r)
-        sum_g = sum(int(i[0]) for i in cubes_g)
-        sum_b = sum(int(i[0]) for i in cubes_b)
+        sum_r = sum(int(i) for i in cubes_r)
+        sum_g = sum(int(i) for i in cubes_g)
+        sum_b = sum(int(i) for i in cubes_b)
 
         if (sum_r > MAX_R or
             sum_g > MAX_G or
