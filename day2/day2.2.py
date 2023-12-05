@@ -8,17 +8,17 @@ import sys
 
 def game_power(game: str) -> int:
     # Extract cube info
-    cubes_r = re.findall(r"(\d+) (red)", game)
-    cubes_g = re.findall(r"(\d+) (green)", game)
-    cubes_b = re.findall(r"(\d+) (blue)", game)
+    cubes_r = re.findall(r"(\d+) red", game)
+    cubes_g = re.findall(r"(\d+) green", game)
+    cubes_b = re.findall(r"(\d+) blue", game)
 
-    # The highest occurrence = the number required
-    hi_r = int(max(cubes_r, key=lambda t: int(t[0]))[0])
-    hi_g = int(max(cubes_g, key=lambda t: int(t[0]))[0])
-    hi_b = int(max(cubes_b, key=lambda t: int(t[0]))[0])
+    # Convert to ints
+    cubes_r = [ int(i) for i in cubes_r ]
+    cubes_g = [ int(i) for i in cubes_g ]
+    cubes_b = [ int(i) for i in cubes_b ]
 
-    # Multiplication of these = the 'power'
-    return hi_r * hi_g * hi_b
+    # Multiplying the highest occurrence of each = the 'power'
+    return max(cubes_r) * max(cubes_g) * max(cubes_b)
 
 
 def main():
