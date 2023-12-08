@@ -6,12 +6,12 @@ Day 4.1
 import re
 import sys
 
-def calculate_winnings(data: list[int]) -> int:
+def calculate_winnings(cards: list[int]) -> int:
     num_re = re.compile(r"Card\s+\d+:\s+([^\|]+)\s+\|\s+([^\|]+)\n")
 
     total_points = 0
-    for line in data:
-        card_points = 0
+    for line in cards:
+        points = 0
 
         nums = num_re.findall(line)
         if not nums:
@@ -24,9 +24,9 @@ def calculate_winnings(data: list[int]) -> int:
         # Check if 'have' numbers are in 'want' list
         for n in have:
             if n in want:
-                card_points = card_points * 2 if card_points > 0 else 1
+                points = points * 2 if points > 0 else 1
 
-        total_points += card_points
+        total_points += points
     return total_points
 
 
