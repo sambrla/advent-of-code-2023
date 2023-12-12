@@ -29,7 +29,7 @@ def map_seed_ranges(
     if not almanac or i >= len(almanac):
         return seed_range
 
-    mapped_range = []
+    mapped_ranges = []
     for start, end in seed_range:
         # Run seed range through each map
         all_mapped = False
@@ -38,7 +38,7 @@ def map_seed_ranges(
             if start >= map.src_start and end <= map.src_end:
                 start += map.offset
                 end += map.offset
-                mapped_range.append((start, end))
+                mapped_ranges.append((start, end))
 
                 # Nothing left to do given the seed range
                 # is a full overlap of this map
@@ -50,7 +50,7 @@ def map_seed_ranges(
                 old_end = end
                 start += map.offset
                 end = map.src_end + map.offset
-                mapped_range.append((start, end))
+                mapped_ranges.append((start, end))
 
                 # Update start and end with what's left over
                 # for the next map (if any)
@@ -62,7 +62,7 @@ def map_seed_ranges(
                 old_start = start
                 start = map.src_start + map.offset
                 end += map.offset
-                mapped_range.append((start, end))
+                mapped_ranges.append((start, end))
 
                 # Update start and end with what's left over
                 # for the next map (if any)
@@ -71,9 +71,9 @@ def map_seed_ranges(
 
         # Add any range not matched 'as is' in readiness for the next map set
         if not all_mapped:
-            mapped_range.append((start, end))
+            mapped_ranges.append((start, end))
 
-    return map_seed_ranges(mapped_range, almanac, i+1)
+    return map_seed_ranges(mapped_ranges, almanac, i+1)
 
 
 def build_almanac(input: list[str]) -> list[Map]:
