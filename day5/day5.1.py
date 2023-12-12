@@ -21,7 +21,7 @@ from collections import namedtuple
 Map = namedtuple("Map", "src_start, src_end, dst_start, dst_end, offset")
 
 
-def map_seeds(seed: int, almanac: list[Map], i: int) -> int:
+def map_seed(seed: int, almanac: list[Map], i: int) -> int:
     if not almanac or i >= len(almanac):
         return seed
 
@@ -30,7 +30,7 @@ def map_seeds(seed: int, almanac: list[Map], i: int) -> int:
             seed += map.offset
             break
 
-    return map_seeds(seed, almanac, i+1)
+    return map_seed(seed, almanac, i+1)
 
 
 def build_almanac(input: list[str]) -> list[Map]:
@@ -68,7 +68,7 @@ def main():
         min_loc = None
 
         for s in seeds:
-            loc = map_seeds(int(s), almanac, 0)
+            loc = map_seed(int(s), almanac, 0)
             if min_loc is None or loc < min_loc:
                 min_loc = loc
 
