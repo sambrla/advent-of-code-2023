@@ -21,7 +21,7 @@ from collections import namedtuple
 Map = namedtuple("Map", "src_start, src_end, dst_start, dst_end, offset")
 
 
-def map_seed(seed: int, almanac: list[Map], i: int) -> int:
+def map_seed(seed: int, almanac: list[list[Map]], i: int) -> int:
     if not almanac or i >= len(almanac):
         return seed
 

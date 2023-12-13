@@ -22,15 +22,15 @@ Map = namedtuple("Map", "src_start, src_end, dst_start, dst_end, offset")
 
 
 def map_seed_ranges(
-    seed_range: list[tuple[int, int]],
-    almanac: list[Map],
+    input_ranges: list[tuple[int, int]],
+    almanac: list[list[Map]],
     i: int
 ) -> list[tuple[int, int]]:
     if not almanac or i >= len(almanac):
-        return seed_range
+        return input_ranges
 
     mapped_ranges = []
-    for start, end in seed_range:
+    for start, end in input_ranges:
         # Run seed range through each map
         all_mapped = False
         for map in almanac[i]:
@@ -109,7 +109,7 @@ def main():
         seeds = re.findall(r"(\d+) (\d+)", lines[0])
         almanac = build_almanac(lines[1:])
 
-        min_loc: tuple[int, int] = None
+        min_loc = (0, 0)
         for s, l in seeds:
             range_start = int(s)
             range_end = range_start + int(l)
@@ -117,7 +117,7 @@ def main():
             locs = map_seed_ranges([(range_start, range_end)], almanac, 0)
             candidate_loc = min(locs, key=lambda r: r[0])
 
-            if min_loc is None or candidate_loc < min_loc:
+            if not all(min_loc) or candidate_loc < min_loc:
                 min_loc = candidate_loc
 
         print(min_loc[0])
