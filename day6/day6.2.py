@@ -18,7 +18,7 @@ def calculate_race_opts(race: tuple[int, int]) -> int:
     return (ways << 1) if (race_len+1) % 2 == 0 else (ways << 1) - 1
 
 
-def parse_races(input):
+def total_margin_of_error(input):
     nums = []
     for line in input:
         match = re.search(r"[^A-Za-z:\s][\d+ ]+", line)
@@ -28,7 +28,7 @@ def parse_races(input):
     # Should only be two rows: one for time, one for distance
     assert len(nums) == 2
 
-    print(calculate_race_opts((nums[0], nums[1])))
+    return calculate_race_opts((nums[0], nums[1]))
 
 
 def main():
@@ -36,7 +36,7 @@ def main():
         sys.exit("Usage: {} <input>".format(sys.argv[0]))
 
     with open(sys.argv[1]) as doc:
-        parse_races(doc.readlines())
+        print(total_margin_of_error(doc.readlines()))
 
 
 if __name__ == "__main__":
