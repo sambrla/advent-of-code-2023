@@ -33,7 +33,7 @@ def map_seed(seed: int, almanac: list[Map], i: int) -> int:
     return map_seed(seed, almanac, i+1)
 
 
-def build_almanac(input: list[str]) -> list[Map]:
+def build_almanac(input: list[str]) -> list[list[Map]]:
     """
     Each returned map in the almanac is in the format:
     (src start, src end, dst start, dst end, offset)

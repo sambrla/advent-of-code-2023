@@ -76,7 +76,7 @@ def map_seed_ranges(
     return map_seed_ranges(mapped_ranges, almanac, i+1)
 
 
-def build_almanac(input: list[str]) -> list[Map]:
+def build_almanac(input: list[str]) -> list[list[Map]]:
     """
     Each returned map in the almanac is in the format:
     (src start, src end, dst start, dst end, offset)
