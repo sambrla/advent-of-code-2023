@@ -26,7 +26,7 @@ def rank(hands: list[tuple[str, int]]) -> list[tuple[str, int]]:
     11111 -> High card
     """
 
-    # Mapping of cards to rank based for sorting equal 'valued' hands
+    # Mapping of cards to rank for sorting equal 'valued' hands
     RANKS = { "A": "n", "K": "m", "Q": "l", "T": "k", "9": "j",
               "8": "i", "7": "h", "6": "g", "5": "f", "4": "e",
               "3": "d", "2": "c", "1": "b", "J": "a" }
