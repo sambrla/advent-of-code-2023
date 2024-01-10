@@ -30,9 +30,7 @@ def find_reflections(lines: list[str]) -> tuple[int, int]:
     # Find lines of reflection
     while i < len(lines)-1:
         if lines[i] == lines[i+1]:
-            l = i
-            r = i+1
-            res = reflect(lines, l, r)
+            res = reflect(lines, i, i+1)
             if res != (0, 0):
                 break
         i += 1
