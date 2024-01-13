@@ -15,7 +15,7 @@ def hash(input: str) -> int:
     return val
 
 
-def proces_seq(seq: list[str]) -> int:
+def process_seq(seq: list[str]) -> int:
     sum = 0
     for s in seq:
         sum += hash(s)
@@ -28,7 +28,7 @@ def main():
 
     with open(sys.argv[1]) as doc:
         seq = doc.read().strip().split(",")
-        print(proces_seq(seq))
+        print(process_seq(seq))
 
 
 if __name__ == "__main__":
